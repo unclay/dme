@@ -4,8 +4,8 @@ var webpack = require('webpack')
 var fs = require('fs')
 var ConcatSource = require('webpack/lib/ConcatSource');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var argv = require('yargs').argv;
 
-console.log(pkg.version)
 function MyPlugin(options) {
 	this.regExps = options.regExps || {};
   // Configure your plugin with options...
@@ -21,11 +21,12 @@ MyPlugin.prototype.apply = function(compiler) {
     compilation.plugin("optimize-chunk-assets", function(chunks, callback) {
       chunks.forEach(function(chunk) {
         chunk.files.forEach(function(file) {
-        	let source = compilation.assets[file].source()
-        	for (let regExp of _this.regExps) {
+        	var source = compilation.assets[file].source()
+        	for (var regExp of _this.regExps) {
         		source = source.replace(regExp[0], regExp[1])
         	}
-        	compilation.assets[file.replace('min.', '')] = new ConcatSource(source)
+          // compilation.assets[file.replace('min.', '')] = new ConcatSource(source)
+        	compilation.assets[file] = new ConcatSource(source)
         });
       });
       callback();
@@ -33,16 +34,33 @@ MyPlugin.prototype.apply = function(compiler) {
   })
 };
 
+var plugins = [
+  new webpack.NoErrorsPlugin(),
+  new MyPlugin({
+    regExps: [
+      [ /define.amd/gi, 1 ]
+    ]
+  })
+]
+var min = ''
+if (argv.min) {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }))
+  min = 'min.'
+}
+
 module.exports = {
   entry: {
-  	'app': "./src/index.js",
-  	'app.min': "./src/index.js"
+  	'app': "./src/index.js"
   },
   output: {
     path: path.resolve(__dirname, '../dist', pkg.version),
-    filename: "dme.min.js",
+    filename: `${pkg.name}.${min}js`,
     libraryTarget: 'umd',
-    library: 'dme'
+    library: pkg.name
   },
   module: {
     loaders: [
@@ -57,20 +75,8 @@ module.exports = {
       }
     ],
     'uglify-loader': {
-        mangle: false
+      mangle: false
     }
   },
-  plugins: [
-  	new webpack.NoErrorsPlugin(),
-  	new MyPlugin({
-  		regExps: [
-  			[ /define.amd/gi, 1 ]
-  		]
-  	}),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-	        warnings: false
-	    }
-		})
-  ]
+  plugins: plugins
 }

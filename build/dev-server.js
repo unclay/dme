@@ -1,5 +1,5 @@
 /**
-* npm run dev -- --host 0.0.0.0 --port 8085
+* npm run dev -- --host 0.0.0.0 --port 4000
 */
 
 var express = require('express')
@@ -11,8 +11,8 @@ var compiler = webpack(config)
 
 var argv = require('yargs').argv
 
-var host = argv.host || '127.0.0.1'
-var port = argv.port || 8080
+var host = argv.host || '0.0.0.0'
+var port = argv.port || 4000
 
 // handle fallback for HTML5 history API
 // app.use(require('connect-history-api-fallback')())
@@ -41,6 +41,6 @@ app.listen(port, host, function (err) {
   }
   console.log(`Listening at http://${host}:${port}/`)
   // manully trigger bundle building to save time
-  http.get(`http://127.0.0.1:${port}/index.html`)
+  http.get(`http://${host}:${port}/index.html`)
 })
 

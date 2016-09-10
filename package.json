@@ -1,23 +1,25 @@
 {
-  "name": "webpack-hmr",
-  "version": "1.0.0",
+  "name": "dme",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node build/dev-server.js",
-    "build": "webpack --config build/webpack.prod.conf.js"
+    "build": "npm run build-prod && npm run build-prod-min && npm run build-doc",
+    "build-prod": "webpack --config build/webpack.prod.conf.js",
+    "build-prod-min": "webpack --config build/webpack.prod.conf.js --min",
+    "build-doc": "webpack --config build/webpack.doc.conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unclay/webpack-hmr.git"
+    "url": "git+https://github.com/unclay/dme.git"
   },
   "author": "unclay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/unclay/webpack-hmr/issues"
+    "url": "https://github.com/unclay/dme/issues"
   },
-  "homepage": "https://github.com/unclay/webpack-hmr#readme",
+  "homepage": "https://github.com/unclay/dme#readme",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
@@ -38,6 +40,7 @@
     "vue-loader": "^8.5.2",
     "vue-router": "^0.7.13",
     "vue-style-loader": "^1.0.0",
+    "vuex": "^1.0.0-rc.2",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
