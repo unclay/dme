@@ -1,17 +1,18 @@
 <template>
-  <div class="demo_wrap">
+  <div class="demo_wrap markdown-body">
     <h1>获取当前时间</h1>
     <p><button @click="getDate">获取当前时间</button> {{ date }}</p>
-    <textarea class="code_container" disabled rows="3">
-var dme = require('dme')
+    <pre>
+<code>var dme = require('dme')
 var date = dme.date()
 console.log(date)
-    </textarea>
+</code>
+    </pre>
   </div>
 </template>
 
 <script>
-  import dme from '../../'
+  import dme from '../src'
   export default {
     data () {
       return {
@@ -28,7 +29,11 @@ console.log(date)
 
 <style lang="less">
   .demo_wrap {
-    padding: 20px;
+    pre {
+      code {
+        display: inline-block;
+      }
+    }
   }
   .code_container {
     width: 100%;

@@ -1,8 +1,8 @@
 <template>
-  <div class="demo_wrap">
-    <h1>是否是微信：</h1>
+  <div class="demo_wrap markdown-body">
+    <h2>是否是微信：</h2>
     <p>{{ isWx }}</p>
-    <h1>是否是移动端：</h1>
+    <h2>是否是移动端：</h2>
     <p>{{ isWeb }}</p>
     <textarea class="code_container" disabled rows="3">
 var dme = require('dme');
@@ -13,7 +13,7 @@ console.log(dme.isWeb());
 </template>
 
 <script>
-  import dme from '../../'
+  import dme from '../src'
   export default {
     data () {
       return {

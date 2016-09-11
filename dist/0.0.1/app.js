@@ -62,23 +62,26 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _doc = __webpack_require__(14);
-
-	var _doc2 = _interopRequireDefault(_doc);
-
-	var _history = __webpack_require__(16);
-
-	var _history2 = _interopRequireDefault(_history);
-
-	var _example = __webpack_require__(18);
+	var _example = __webpack_require__(14);
 
 	var _example2 = _interopRequireDefault(_example);
 
-	var _check = __webpack_require__(28);
+	var _check = __webpack_require__(24);
 
 	var _check2 = _interopRequireDefault(_check);
 
+	var _README = __webpack_require__(29);
+
+	var _README2 = _interopRequireDefault(_README);
+
+	var _HISTORY = __webpack_require__(30);
+
+	var _HISTORY2 = _interopRequireDefault(_HISTORY);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// .md list
+
 
 	// page list
 	// base list
@@ -90,10 +93,14 @@
 	var router = new _vueRouter2.default();
 	router.map({
 	  '/': {
-	    component: _doc2.default
+	    component: {
+	      template: _README2.default
+	    }
 	  },
 	  '/history': {
-	    component: _history2.default
+	    component: {
+	      template: _HISTORY2.default
+	    }
 	  },
 	  '/demo': {
 	    component: _example2.default
@@ -13468,6 +13475,77 @@
 	    }
 	  }
 	};
+	// </script>
+	//
+	// <style lang="less">
+	//   @import './styles/reset.less';
+	//   .dme {
+	//     position: relative;
+	//     width: 100%;
+	//     height: 100%;
+	//     .aside {
+	//       position: absolute;
+	//       top: 0;
+	//       left: 0;
+	//       bottom: 0;
+	//       padding: 40px 3% 20px;
+	//       width: 20%;
+	//       color: #46535d;
+	//       background-color: #fafafa;
+	//       border-right: 1px solid rgba(0,0,0,.07);
+	//       z-index: 1;
+	//     }
+	//
+	//     .section {
+	//       position: absolute;
+	//       top: 0;
+	//       left: 20%;
+	//       bottom: 0;
+	//       width: 80%;
+	//       z-index: 1;
+	//     }
+	//   }
+	//   .doc_container {
+	//     width: 100%;
+	//     min-height: 500px;
+	//     padding: 2%;
+	//     margin: 0;
+	//   }
+	//   @media (max-width: 980px) {
+	//     .dme {
+	//       .aside,
+	//       .section {
+	//         float: none;
+	//         position: static;
+	//         width: auto;
+	//       }
+	//     }
+	//   }
+	// </style>
+	// <template>
+	// 	<div class="dme">
+	//     <aside class="aside">
+	//       <h1>DME</h1>
+	//       <p class="aside-version">Version: {{ count }}</p>
+	//       <ul class="aside-nav">
+	//         <li><a v-link="{ path: '/' }">DOC</a></li>
+	//         <li><a v-link="{ path: '/demo' }">DEMO</a></li>
+	//         <li><a v-link="{ path: '/history' }">HISTORY</a></li>
+	//         <li><a v-link="{ path: '/' }">TEST</a></li>
+	//       </ul>
+	//       <p>Path: ({{ path }})</p>
+	//       <ul v-if="path.substr(0, 5) === '/demo'">
+	//         <li><a v-link="{ path: '/demo' }">基本说明</a></li>
+	//         <li><a v-link="{ path: '/demo/check' }">检查</a></li>
+	//       </ul>
+	//     </aside>
+	//     <section class="section">
+	//       <router-view></router-view>
+	//     </section>
+	// 	</div>
+	// </template>
+	//
+	// <script>
 
 /***/ },
 /* 11 */
@@ -14192,71 +14270,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(15)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "./doc.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	module.exports = "\n\t<textarea class=\"doc_container\" disabled>\n# dme\n\n## 说明\n> 模块开发引擎\n\n## 为什么\n由于spmjs挂掉了，成为历史尘埃，但一时之间不是说不用就不用，seajs还是要继续使用，又想写es6、vue，于是便有了它DME\n\n{{ count }}\n  </textarea>\n";
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(17)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "./history.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	module.exports = "\n  <textarea class=\"doc_container\" disabled>\n# dme\n\n## 1.0.0\n\n+ 搭建底层站点各项功能\n+ 提供webpack + vue + less + umd\n  </textarea>\n";
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(19)
-	__vue_script__ = __webpack_require__(21)
+	__webpack_require__(15)
+	__vue_script__ = __webpack_require__(17)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/demos/example/index.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(27)
+	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14275,13 +14295,13 @@
 	})()}
 
 /***/ },
-/* 19 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(20);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(9)(content, {});
@@ -14301,7 +14321,7 @@
 	}
 
 /***/ },
-/* 20 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(8)();
@@ -14309,13 +14329,13 @@
 
 
 	// module
-	exports.push([module.id, ".demo_wrap {\n  padding: 20px;\n}\n.code_container {\n  width: 100%;\n  padding: 10px;\n  line-height: 1.6;\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, ".demo_wrap {\n  padding: 20px;\n}\n.demo_wrap code {\n  background-color: #dedede;\n  display: inline-block;\n  padding: 15px;\n  border-radius: 10px;\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.code_container {\n  width: 100%;\n  padding: 10px;\n  line-height: 1.6;\n  overflow: hidden;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 21 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14324,7 +14344,7 @@
 	  value: true
 	});
 
-	var _ = __webpack_require__(22);
+	var _ = __webpack_require__(18);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -14343,20 +14363,54 @@
 	    }
 	  }
 	};
+	// </script>
+	//
+	// <style lang="less">
+	//   .demo_wrap {
+	//     padding: 20px;
+	//     code {
+	//       background-color: #dedede;
+	//       display: inline-block;
+	//       padding: 15px;
+	//       border-radius: 10px;
+	//       transition: all 1s;
+	//     }
+	//   }
+	//   .code_container {
+	//     width: 100%;
+	//     padding: 10px;
+	//     line-height: 1.6;
+	//     overflow: hidden;
+	//   }
+	// </style>
+	// <template>
+	//   <div class="demo_wrap">
+	//     <h1>获取当前时间</h1>
+	//     <p><button @click="getDate">获取当前时间</button> {{ date }}</p>
+	//     <pre>
+	// <code>var dme = require('dme')
+	// var date = dme.date()
+	// console.log(date)
+	// </code>
+	//     </pre>
+	//   </div>
+	// </template>
+	//
+	// <script>
 
 /***/ },
-/* 22 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _check = __webpack_require__(23);
+	var _check = __webpack_require__(19);
 
 	var _check2 = _interopRequireDefault(_check);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(24);
+	__webpack_require__(20);
 
 
 	// 获取当前时间
@@ -14369,7 +14423,7 @@
 	}
 
 /***/ },
-/* 23 */
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14389,23 +14443,23 @@
 	};
 
 /***/ },
-/* 24 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(25);
+	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(26)(content, {});
+	var update = __webpack_require__(22)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/less-loader/index.js!./style.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/less-loader/index.js!./style.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/autoprefixer-loader/index.js!./style.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/autoprefixer-loader/index.js!./style.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -14415,7 +14469,7 @@
 	}
 
 /***/ },
-/* 25 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(8)();
@@ -14423,13 +14477,13 @@
 
 
 	// module
-	exports.push([module.id, ".tt {\n  color: yellow;\n}\n", ""]);
+	exports.push([module.id, ".tt {\n\tcolor: yellow;\n}", ""]);
 
 	// exports
 
 
 /***/ },
-/* 26 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -14681,23 +14735,23 @@
 
 
 /***/ },
-/* 27 */
+/* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"demo_wrap\">\n    <h1>获取当前时间</h1>\n    <p><button @click=\"getDate\">获取当前时间</button> {{ date }}</p>\n    <textarea class=\"code_container\" disabled rows=\"3\">\nvar dme = require('dme')\nvar date = dme.date()\nconsole.log(date)\n    </textarea>\n  </div>\n";
+	module.exports = "\n  <div class=\"demo_wrap\">\n    <h1>获取当前时间</h1>\n    <p><button @click=\"getDate\">获取当前时间</button> {{ date }}</p>\n    <pre>\n<code>var dme = require('dme')\nvar date = dme.date()\nconsole.log(date)\n</code>\n    </pre>\n  </div>\n";
 
 /***/ },
-/* 28 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(29)
-	__vue_script__ = __webpack_require__(31)
+	__webpack_require__(25)
+	__vue_script__ = __webpack_require__(27)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/demos/example/check.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(32)
+	__vue_template__ = __webpack_require__(28)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14716,13 +14770,13 @@
 	})()}
 
 /***/ },
-/* 29 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(30);
+	var content = __webpack_require__(26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(9)(content, {});
@@ -14742,7 +14796,7 @@
 	}
 
 /***/ },
-/* 30 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(8)();
@@ -14756,7 +14810,7 @@
 
 
 /***/ },
-/* 31 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14765,7 +14819,7 @@
 	  value: true
 	});
 
-	var _ = __webpack_require__(22);
+	var _ = __webpack_require__(18);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -14779,12 +14833,52 @@
 	    };
 	  }
 	};
+	// </script>
+	//
+	// <style lang="less">
+	//   .demo_wrap {
+	//     padding: 20px;
+	//   }
+	//   .code_container {
+	//     width: 100%;
+	//     padding: 10px;
+	//     line-height: 1.6;
+	//     overflow: hidden;
+	//   }
+	// </style>
+	// <template>
+	//   <div class="demo_wrap">
+	//     <h1>是否是微信：</h1>
+	//     <p>{{ isWx }}</p>
+	//     <h1>是否是移动端：</h1>
+	//     <p>{{ isWeb }}</p>
+	//     <textarea class="code_container" disabled rows="3">
+	// var dme = require('dme');
+	// console.log(dme.isWx());
+	// console.log(dme.isWeb());
+	//     </textarea>
+	//   </div>
+	// </template>
+	//
+	// <script>
 
 /***/ },
-/* 32 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"demo_wrap\">\n    <h1>是否是微信：</h1>\n    <p>{{ isWx }}</p>\n    <h1>是否是移动端：</h1>\n    <p>{{ isWeb }}</p>\n    <textarea class=\"code_container\" disabled rows=\"3\">\nvar dme = require('dme');\nconsole.log(dme.isWx());\nconsole.log(dme.isWeb());\n    </textarea>\n  </div>\n";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"dme\">DME</h1>\n<p>Based on <a href=\"https://github.com/unclay/webpack-hmr.git\">webpack-hmr</a><br>Development Module Engine. (webpack+vue+less+es6)</p>\n<h1 id=\"usage\">Usage</h1>\n<pre><code class=\"lang-bash\"># serve with hot reload at localhost:4000\nnpm run dev\n\n# you can custom host and port\nnpm run dev -- --host 0.0.0.0 --port 4000\n\n# build for production with minification\nnpm run build\n</code></pre>\n<h1 id=\"issue\">issue</h1>\n<pre><code class=\"lang-bash\"># question\ncompat with &lt; 2.0.0-alpha.7\n  if (Vue.config._lifecycleHooks.indexOf(&#39;init&#39;) &gt; -1) {\n\n# resolve\nnpm install --save-dev vue-hot-reload-api@^1.3.2\n</code></pre>\n<h1 id=\"license\">License</h1>\n<p>MIT</p>\n";
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"dme\">dme</h1>\n<h2 id=\"1-0-0\">1.0.0</h2>\n<ul>\n<li>搭建底层站点各项功能</li>\n<li>提供webpack + vue + less + umd</li>\n</ul>\n";
 
 /***/ }
 /******/ ]);

@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  count: 0,
   path: '',
   demos: []
 }
@@ -15,9 +14,6 @@ const mutations = {
   },
   ADD_DEMOS (state, demo) {
     state.demos.push(demo)
-  },
-  INCREMENT (state) {
-    state.count++;
   }
 }
 

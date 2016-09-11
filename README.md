@@ -1,5 +1,5 @@
 # DME
-Based on [webpack-hmr](https://github.com/unclay/webpack-hmr.git)  
+Based on [webpack-hmr](https://github.com/unclay/webpack-hmr.git) and simulate spmjs 
 Development Module Engine. (webpack+vue+less+es6)
 
 # Usage

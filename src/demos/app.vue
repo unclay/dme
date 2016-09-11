@@ -7,12 +7,13 @@
         <li><a v-link="{ path: '/' }">DOC</a></li>
         <li><a v-link="{ path: '/demo' }">DEMO</a></li>
         <li><a v-link="{ path: '/history' }">HISTORY</a></li>
-        <li><a v-link="{ path: '/' }">TEST</a></li>
+        <li><a>TEST</a></li>
       </ul>
       <p>Path: ({{ path }})</p>
       <ul v-if="path.substr(0, 5) === '/demo'">
-        <li><a v-link="{ path: '/demo' }">基本说明</a></li>
-        <li><a v-link="{ path: '/demo/check' }">检查</a></li>
+        <li v-for="item of demos" >
+          <a v-link="{ path: item.path }">{{ item.name }}</a>
+        </li>
       </ul>
     </aside>
     <section class="section">
@@ -27,7 +28,8 @@
     store,
     vuex: {
       getters: {
-        path: state => state.path
+        path: state => state.path,
+        demos: state => state.demos
       }
     }
   }
@@ -57,6 +59,7 @@
       top: 0;
       left: 20%;
       bottom: 0;
+      padding: 4%;
       width: 80%;
       z-index: 1;
     }

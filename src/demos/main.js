@@ -7,28 +7,49 @@ import app from './app'
 import store from '../vuex/store'
 
 // page list
-import doc from './doc'
-import history from './history'
-import demo from './example/'
-import demoCheck from './example/check'
+import demoConf from '../../examples/config'
+
+// .md list
+import readme from '../../README.md'
+import history from '../../HISTORY.md'
+
+// load styles
+require('github-css')
 
 Vue.use(Router)
 
 const router = new Router()
-router.map({
+const map = {
   '/': {
-    component: doc
+    component: {
+      template: `<div class="markdown-body">${readme}</div>`
+    }
   },
   '/history': {
-    component: history
-  },
-  '/demo': {
-    component: demo
-  },
-  '/demo/check': {
-    component: demoCheck
+    component: {
+      template: `<div class="markdown-body">${history}</div>`
+    }
   }
-})
+}
+// config demoUrl from examples/config.js
+for (let item of demoConf) {
+  if (item.filename) {
+    let path = '/demo'
+    if (item.filename !== 'index') {
+      path += `/${item.filename}`
+    }
+    map[path] = {
+      component: require(`../../examples/${item.filename}`)
+    }
+    // config demos aside nav
+    store.dispatch('ADD_DEMOS', {
+      path,
+      name: item.name || path
+    })
+  }
+}
+
+router.map(map)
 
 router.beforeEach(({ to, from, next }) => {
   store.dispatch('UPDATE_PATH', to.path)

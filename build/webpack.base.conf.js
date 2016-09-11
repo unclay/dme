@@ -14,7 +14,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, '../node_modules')]
+    fallback: [path.join(__dirname, '../node_modules')],
+    alias: {
+      'github-css': "github-markdown-css/github-markdown.css"
+    }
   },
   module: {
     loaders: [
@@ -23,17 +26,21 @@ module.exports = {
         loader: 'vue'
       },
       {
+        test: /\.md$/,
+        loader: 'html!markdown'
+      },
+      {
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style!css!autoprefixer'
       },
       {
         test: /\.less$/,
-        loader: 'style!css!less'
+        loader: 'style!css!autoprefixer!less'
       }
     ]
   },
