@@ -36,11 +36,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css!autoprefixer'
+        loader: 'style!css!postcss'
       },
       {
         test: /\.less$/,
-        loader: 'style!css!autoprefixer!less'
+        loader: 'style!css!postcss!less'
       }
     ]
   },

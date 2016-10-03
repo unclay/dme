@@ -1,13 +1,15 @@
 <template>
   <div class="demo_wrap markdown-body">
-    <h1>获取当前时间</h1>
-    <p><button @click="getDate">获取当前时间</button> {{ date }}</p>
+    <h1>说明</h1>
+    <p>demo文件内容存放于examples目录。<br>
+    demo导航配置存放于examples/config.js</p>
+    <h1>基本用法</h1>
     <pre>
 <code>var dme = require('dme')
-var date = dme.date()
-console.log(date)
+console.log(dme()) // {{ content }}
 </code>
     </pre>
+    <p>{{ content }}</p>
   </div>
 </template>
 
@@ -16,13 +18,10 @@ console.log(date)
   export default {
     data () {
       return {
-        date: dme.date()
+        content: dme()
       }
     },
     methods: {
-      getDate () {
-        this.date = dme.date()
-      }
     }
   }
 </script>
